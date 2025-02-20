@@ -24,6 +24,7 @@ public class UserDao {
 				u1.setLastName(rs.getString("lastName"));
 				u1.setEmail(rs.getString("email"));
 				u1.setPassword(rs.getString("password"));
+				u1.setId(rs.getInt("user_id"));
 			}
 			return u1;
 		}

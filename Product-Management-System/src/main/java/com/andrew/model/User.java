@@ -1,6 +1,7 @@
 package com.andrew.model;
 
 public class User {
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -29,6 +30,15 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public void setId(int id)
+	{
+		this.id=id;
+	}
+	
+	public int getId()
+	{
+		return id;
 	}
 	@Override
 	public String toString() {
