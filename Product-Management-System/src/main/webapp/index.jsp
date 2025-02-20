@@ -1,8 +1,10 @@
+<%@page import="java.util.ArrayList" %>
+<%@page import="com.andrew.model.Product" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Product Management System</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 <body>
 <div class="header">
@@ -21,14 +23,38 @@
 			<%}%>
 		</ul>
 	</nav>
+	<hr>
 	<h1>Product management System</h1>
 </div>
 <%
 String email = (String)session.getAttribute("email");
-
-if (email != null)
+ArrayList<Product> userProducts= (ArrayList<Product>)session.getAttribute("productsList");
+if (email != null && userProducts != null)
 { %>
-<h5>In alien mode</h5>
+<table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Active</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <%for (int i=0;i<userProducts.size();i++){ %>
+        <tbody>
+            <tr>
+                <td><%out.println(userProducts.get(i).getId()); %></td>
+                <td><%out.println(userProducts.get(i).getName()); %></td>
+                <td>$<%out.println(userProducts.get(i).getPrice()); %></td>
+                <td><%out.println(userProducts.get(i).getCategory()); %></td>
+                <td><%out.println(userProducts.get(i).getActive()); %></td>
+                <td><a href="#">Edit</a></td>
+            </tr>
+        </tbody>
+        <%} %>
+    </table>
 <%} %>
 </body>
 </html>
