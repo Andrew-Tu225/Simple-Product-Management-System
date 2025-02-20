@@ -21,7 +21,6 @@ public class ProductDao {
 			Connection conn = DriverManager.getConnection(url,username, password);
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery("select * from product where user_id="+userId+"");
-			System.out.println("work here");
 			while(rs.next())
 			{
 				Product p = new Product();
@@ -31,7 +30,6 @@ public class ProductDao {
 				p.setPrice(rs.getInt("price"));
 				p.setActive(rs.getString("active"));
 				userProducts.add(p);
-				System.out.println(p);
 			}
 			return userProducts;
 		}
